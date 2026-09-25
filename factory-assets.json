@@ -1,0 +1,12 @@
+[
+  {
+    "address": "CBLV4ATSIWU67CFSQU2NVRKINQIKUZ2ODSZBUJTJ43VJVRSBTZYOPNUR",
+    "strategies": [
+      {
+        "address": "CAWOR3R7CCTVTJE3DFLONZETA6GO7DKAOVVWWGHLXU6GCQU56WNH3JPJ",
+        "name": "Prism USTRY Hodl",
+        "paused": false
+      }
+    ]
+  }
+]
