@@ -24,4 +24,12 @@ rustup target add wasm32-unknown-unknown
 stellar contract build
 ```
 
+## Test
+
+```bash
+cargo test
+```
+
+16 tests cover deposit/withdraw accounting, auth, issuer clawback and freeze, and storage TTL under mainnet parameters.
+
 Constructor args are the USTRY SAC and an empty `init_args` vector. USTRY is the classic asset `USTRY:GCRYUGD5NVARGXT56XEZI5CIFCQETYHAPQQTHO2O3IQZTHDH4LATMYWC` as a Soroban token.
