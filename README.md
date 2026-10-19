@@ -17,11 +17,25 @@ Deployed 2026-09-15. Full record: [DEPLOYED.md](DEPLOYED.md).
 
 Deposits go through [prismfi.cc/earn](https://prismfi.cc/earn).
 
-## Build
+## Build (reproduces the mainnet WASM)
+
+Pinned: Rust `1.98.1` (`rust-toolchain.toml`), `soroban-sdk 22.0.11` (`Cargo.lock`), [stellar CLI](https://github.com/stellar/stellar-cli) `28.0.0`. The same versions are recorded in the deployed contract's metadata.
 
 ```bash
-rustup target add wasm32-unknown-unknown
+cargo install --locked stellar-cli --version 28.0.0
 stellar contract build
+sha256sum target/wasm32v1-none/release/ustry_hodl_strategy.wasm
+# 86c4afab2b71ff7641a2ebfe22a9817ad2aecf6feb79c47c1ce2d4919a7e3125
+```
+
+`rustup` installs the pinned toolchain and the `wasm32v1-none` target on first build. Use `stellar contract build`, not plain `cargo build`: the CLI writes its build metadata into the WASM, which is part of the hash.
+
+Compare with the live contract:
+
+```bash
+stellar contract fetch --network mainnet --id CAWOR3R7CCTVTJE3DFLONZETA6GO7DKAOVVWWGHLXU6GCQU56WNH3JPJ -o deployed.wasm
+sha256sum deployed.wasm
+stellar contract info meta --wasm deployed.wasm
 ```
 
 ## Test
